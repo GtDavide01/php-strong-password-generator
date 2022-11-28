@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 use Vtiful\Kernel\Format;
 
@@ -16,6 +17,10 @@ var_dump($numeri);
 var_dump($simboli);
 
 include "./partials/functions.php";
+
+$password = generate($numberPassword);
+echo $password;
+$_SESSION["password"] = $password;
 ?>
 
 
@@ -45,7 +50,7 @@ include "./partials/functions.php";
                         </div>
                     </div>
                 </header>
-                <form action="index.php" method="GET">
+                <form action="password.php" method="GET">
                     <div class="containform">
                         <div class="container">
                             <label for="number">Lunghezza password: </label>
@@ -89,9 +94,7 @@ include "./partials/functions.php";
                             </div>
                             <button class="btn btn-primary" type="submit">Invia</button>
                             <button class="btn btn-secondary" type="reset">Annulla</button>
-                            <?php
-                            $password = generate($numberPassword);
-                            echo $password;  ?>
+
                         </div>
                 </form>
             </div>
