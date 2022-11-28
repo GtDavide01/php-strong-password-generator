@@ -1,10 +1,21 @@
 <?php
+
+use Vtiful\Kernel\Format;
+
 $numberPassword = $_GET["number"] ?? " ";
 $repeatyes = $_GET["repeatyes"] ?? " ";
 $repeatno = $_GET["repeatno"] ?? " ";
+$lettere = $_GET["lettere"] ?? " ";
+$numeri = $_GET["numeri"] ?? " ";
+$simboli  = $_GET["simboli"] ?? " ";
 var_dump($repeatyes);
 var_dump($repeatno);
 var_dump($numberPassword);
+var_dump($lettere);
+var_dump($numeri);
+var_dump($simboli);
+
+include "./partials/functions.php";
 ?>
 
 
@@ -57,20 +68,20 @@ var_dump($numberPassword);
                                         </label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                        <label class="form-check-label" for="flexCheckDefault">
-                                            Lettere
+                                        <input class="form-check-input" type="checkbox" name="lettere" id="lettere">
+                                        <label class="form-check-label" for="lettere">
+                                            Lettere Maiuscole
                                         </label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-                                        <label class="form-check-label" for="flexCheckChecked">
+                                        <input class="form-check-input" type="checkbox" name="numeri" id="numeri">
+                                        <label class="form-check-label" for="numeri">
                                             Numeri
                                         </label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-                                        <label class="form-check-label" for="flexCheckChecked">
+                                        <input class="form-check-input" type="checkbox" name="simboli" id="simboli">
+                                        <label class="form-check-label" for="simboli">
                                             Simboli
                                         </label>
                                     </div>
@@ -78,6 +89,9 @@ var_dump($numberPassword);
                             </div>
                             <button class="btn btn-primary" type="submit">Invia</button>
                             <button class="btn btn-secondary" type="reset">Annulla</button>
+                            <?php
+                            $password = generate($numberPassword);
+                            echo $password;  ?>
                         </div>
                 </form>
             </div>
