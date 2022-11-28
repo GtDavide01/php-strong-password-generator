@@ -1,8 +1,6 @@
 <?php
 session_start();
 
-use Vtiful\Kernel\Format;
-
 $numberPassword = $_GET["number"] ?? " ";
 $repeatyes = $_GET["repeatyes"] ?? " ";
 $repeatno = $_GET["repeatno"] ?? " ";
@@ -16,11 +14,8 @@ var_dump($lettere);
 var_dump($numeri);
 var_dump($simboli);
 
-include "./partials/functions.php";
+include __DIR__ . "./partials/functions.php";
 
-$password = generate($numberPassword);
-echo $password;
-$_SESSION["password"] = $password;
 ?>
 
 
@@ -50,7 +45,7 @@ $_SESSION["password"] = $password;
                         </div>
                     </div>
                 </header>
-                <form action="password.php" method="GET">
+                <form action="index.php" method="GET">
                     <div class="containform">
                         <div class="container">
                             <label for="number">Lunghezza password: </label>
@@ -94,7 +89,8 @@ $_SESSION["password"] = $password;
                             </div>
                             <button class="btn btn-primary" type="submit">Invia</button>
                             <button class="btn btn-secondary" type="reset">Annulla</button>
-
+                            <?php $password = generate($numberPassword);
+                            echo $password; ?>
                         </div>
                 </form>
             </div>
