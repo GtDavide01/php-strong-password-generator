@@ -1,20 +1,14 @@
 <?php
 session_start();
-
+include __DIR__ . "./partials/functions.php";
 $numberPassword = $_GET["number"] ?? " ";
 $repeatyes = $_GET["repeatyes"] ?? " ";
 $repeatno = $_GET["repeatno"] ?? " ";
 $lettere = $_GET["lettere"] ?? " ";
 $numeri = $_GET["numeri"] ?? " ";
 $simboli  = $_GET["simboli"] ?? " ";
-var_dump($repeatyes);
-var_dump($repeatno);
-var_dump($numberPassword);
-var_dump($lettere);
-var_dump($numeri);
-var_dump($simboli);
 
-include __DIR__ . "./partials/functions.php";
+$_SESSION["password"] = generate($numberPassword);
 
 ?>
 
@@ -89,8 +83,10 @@ include __DIR__ . "./partials/functions.php";
                             </div>
                             <button class="btn btn-primary" type="submit">Invia</button>
                             <button class="btn btn-secondary" type="reset">Annulla</button>
-                            <?php $password = generate($numberPassword);
-                            echo $password; ?>
+                            <?php if (!empty($numberPassword)) { ?>
+                                <a href="password.php" class="btn btn-primary">Vedi password</a>
+                            <?php } ?>
+
                         </div>
                 </form>
             </div>
